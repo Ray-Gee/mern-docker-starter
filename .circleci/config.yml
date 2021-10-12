@@ -23,4 +23,4 @@ jobs:
       #     command: docker-compose -f dockertest/docker-compose.test.yml down
       - run:
           name: Dockerコンテナの起動
-          command: docker-compose -f dockertest/docker-compose.dev.yml up -d
+          command: docker-compose -f /dev-docker-compose.yml up -d
