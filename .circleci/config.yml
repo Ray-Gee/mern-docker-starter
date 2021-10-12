@@ -6,6 +6,9 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+      - run:
+          name: Dockerコンテナの起動
+          command: docker-compose -f dev-docker-compose.yml up -d
       # - run:
           # name: Dockerコンテナのビルド
           # command: docker-compose -f dockertest/docker-compose.test.yml build
@@ -21,6 +24,3 @@ jobs:
       # - run:
       #     name: Dockerコンテナの停止
       #     command: docker-compose -f dockertest/docker-compose.test.yml down
-      - run:
-          name: Dockerコンテナの起動
-          command: docker-compose -f dev-docker-compose.yml up -d
