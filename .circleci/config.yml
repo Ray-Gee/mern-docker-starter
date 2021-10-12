@@ -1,12 +1,13 @@
 version: 2
 jobs:
   build:
-    context: "./server"
-    dockerfile: "Dockerfile.dev"
-  environment:
-    - MONGO_URI=${MONGO_URI}
-    - PORT=${PORT}
-    - NODE_ENV=development
+    docker:
+      context: "./server"
+      dockerfile: "Dockerfile.dev"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - PORT=${PORT}
+      - NODE_ENV=development
     working_directory: ~/server
     steps:
       - checkout
