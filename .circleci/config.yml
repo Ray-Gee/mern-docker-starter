@@ -6,9 +6,15 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+      - restore_cache:
+        key: yarn-{{ checksum "yarn.lock"}}
       - run:
           name: Dockerコンテナの起動
           command: docker-compose -f dev-docker-compose.yml up -d
+      - save_cache:
+        key: yarn-{{ checksum "yarn.lock"}}
+        paths:
+          - node_modules
       # - run:
           # name: Dockerコンテナのビルド
           # command: docker-compose -f dockertest/docker-compose.test.yml build
